@@ -1,6 +1,8 @@
 #include "Render.h"
 
-Render::Render()
-{
+//void render::init_display(int width, int height)
+//{
 
-}
+//    Display(width, height);
+
+//}

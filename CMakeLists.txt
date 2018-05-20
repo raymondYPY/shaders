@@ -5,30 +5,18 @@ set(EXE_NAME GLSHADER)
 
 set(EXECUTABLE_SOURCE
     ${EXECUTABLE_SOURCE}
-    main.cpp)
+    main.cpp
+    )
 
-#find_package(OpenGL REQUIRED)
+find_package(OpenGL REQUIRED)
 
-add_subdirectory(Display)
+find_package(SDL2 REQUIRED)
+include_directories(${SDL2_INCLUDE_DIRS})
 
-set(MY_HEADER_FILES
-
-)
-
-set(EXECUTABLE_SOURCE
-    ${EXECUTABLE_SOURCE}
-
-)
-
-
-
-include_directories(
-
-)
 add_executable(${EXE_NAME}
         ${EXECUTABLE_SOURCE}
 )
 
-#target_link_libraries(${EXE_NAME}
-#	${OPENGL_LIBRARY} # filled by "find_package(OpenGL REQUIRED)"
-#)
+target_link_libraries(${EXE_NAME}
+        ${OPENGL_LIBRARY}
+        ${SDL2_LIBRARIES})
