@@ -3,15 +3,19 @@
 
 #include "SDL2/SDL.h"
 
+namespace display {
+
 class Display
 {
 public:
-    Display();
+    Display(){};
     Display(int w, int h);
     ~Display();
 
 private:
     SDL_Window* _window;
 };
+
+}
 
 #endif // DISPLAY_H

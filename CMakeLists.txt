@@ -1,22 +1,29 @@
 cmake_minimum_required(VERSION 3.4.0)
+
+SET(CMAKE_INCLUDE_CURRENT_DIR ON)
+SET(DISPLAY_DIR Display)
+
 project (OpenGLProject)
 
 set(EXE_NAME GLSHADER)
 
-set(EXECUTABLE_SOURCE
-    ${EXECUTABLE_SOURCE}
+add_subdirectory(Display)
+
+include_directories(
+    ${CMAKE_SOURCE_DIR}
+    ${DISPLAY_DIR})
+
+set(EXECUTABLE_SOURCES
+    ${EXECUTABLE_SOURCES}
     main.cpp
+    ${DISPLAY_DIR}/Display.cpp
     )
 
 find_package(OpenGL REQUIRED)
 
-find_package(SDL2 REQUIRED)
-include_directories(${SDL2_INCLUDE_DIRS})
-
-add_executable(${EXE_NAME}
-        ${EXECUTABLE_SOURCE}
-)
+message("Sources are ${EXECUTABLE_SOURCES}")
+add_executable(${EXE_NAME} ${EXECUTABLE_SOURCES})
 
 target_link_libraries(${EXE_NAME}
         ${OPENGL_LIBRARY}
-        ${SDL2_LIBRARIES})
+        ${DISPLAY_LINK_LIBRAY})
